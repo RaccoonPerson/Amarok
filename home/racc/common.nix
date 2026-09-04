@@ -34,7 +34,7 @@
   programs.git = {
     enable = true;
     settings.user.name = "racc";
-    # settings.user.email = "you@example.com";
+    settings.user.email = "racc44@pm.me";
   };
 
   programs.bash.enable = true;
