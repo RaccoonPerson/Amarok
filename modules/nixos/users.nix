@@ -3,15 +3,13 @@
 {
   users.users.racc = {
     isNormalUser = true;
-    description = "Racc";
 
-    # wheel = sudo. Hosts add their own groups on top of this list.
     extraGroups = [ "wheel" ];
 
     shell = pkgs.fish;
 
     openssh.authorizedKeys.keys = [
-      # "ssh-ed25519 AAAA...  racc@fedora"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKLqP4Sd3ZoiSO+hY+Ky/og/oJxSxbj9ZFG6c23qt6VR racc44@pm.me"
     ];
   };
 

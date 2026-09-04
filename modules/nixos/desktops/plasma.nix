@@ -22,6 +22,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    distrobox
+
     haruna
 
     hunspell
@@ -77,4 +79,9 @@
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
   ];
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 }

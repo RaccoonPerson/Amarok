@@ -32,14 +32,13 @@
     # Chat
     discord
 
-    distrobox
-
     vscode
 
     claude-code
 
     kontainer
   ];
+
 
   # Plasma settings stay imperative (System Settings) unless you add
   # plasma-manager as a flake input and import its HM module here.

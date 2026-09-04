@@ -9,10 +9,10 @@
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
 
-    ../../modules/common.nix
-    ../../modules/desktop.nix
-    ../../modules/users.nix
-    ../../modules/home-manager-settings.nix
+    ../../modules/nixos/common.nix
+    ../../modules/nixos/desktops/plasma.nix
+    ../../modules/nixos/users.nix
+    ../../modules/nixos/home-manager-settings.nix
 
     # Keep commented for the initial install -- lanzaboote fails to build
     # until sbctl keys exist on the target. Uncomment at INSTALL.md step 7.
@@ -62,7 +62,10 @@
   # ---- User ----------------------------------------------------------------
 
   # Merges with the [ "wheel" ] in modules/users.nix.
-  users.users.racc.extraGroups = [ "networkmanager" "video" ];
+  users.users.racc.extraGroups = [
+    "networkmanager"
+    "video"
+  ];
 
   home-manager.users.racc = import ../../home/racc/desktop.nix;
 
