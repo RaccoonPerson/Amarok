@@ -9,14 +9,13 @@
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
 
+    ../../modules/nixos/desktops/noctalia.nix
+    ../../modules/nixos/login-managers/noctalia-greeter.nix
+
     ../../modules/nixos/common.nix
-    ../../modules/nixos/desktops/plasma.nix
     ../../modules/nixos/users.nix
     ../../modules/nixos/home-manager-settings.nix
-
-    # Keep commented for the initial install -- lanzaboote fails to build
-    # until sbctl keys exist on the target. Uncomment at INSTALL.md step 7.
-    # ../../modules/secure-boot.nix
+    ../../modules/nixos/secure-boot.nix # comment out on install
   ];
 
   networking.hostName = "lapbottom";

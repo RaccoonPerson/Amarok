@@ -1,7 +1,9 @@
-# modules/secure-boot.nix
-# Import only after `sbctl create-keys` has populated /var/lib/sbctl on
-# the target. Until then the build fails at bootloader installation.
-{ pkgs, lib, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 

@@ -1,49 +1,24 @@
-# modules/desktop.nix
-# Shared by thingamajig and lapbottom. Not imported on archongrid.
+# modules/desktop/plasma.nix
+# KDE Plasma 6 on Wayland + KDE apps. Pair with sddm.nix (or noctalia-greeter.nix).
 { pkgs, ... }:
 {
+  imports = [ ./default.nix ];
 
-  # Plasma 6 on Wayland. No services.xserver.enable needed; XWayland is
-  # pulled in by Plasma for legacy X11 apps.
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+  # No services.xserver.enable needed; XWayland is pulled in by Plasma for
+  # legacy X11 apps.
   services.desktopManager.plasma6.enable = true;
 
-  hardware.graphics.enable = true;
-
-  # PipeWire for audio; rtkit lets it run realtime threads.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-  };
+  # Installs KDE Connect and opens the firewall ports it needs.
+  programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
-    distrobox
-
-    haruna
-
-    hunspell
-    hunspellDicts.en_US-large
-
-    atool
-    xarchiver
-    unrar
-    p7zip
-    zip
-    unzip
-    pigz
-    pixz
-    plzip
-    cpio
+    haruna # mpv-based video player
   ] ++ (with pkgs.kdePackages; [
     (spectacle.override {
       tesseractLanguages = [ "eng" ];
     })
-        # Utilities
+
+    # Utilities
     konsole
     kcalc
     kate
@@ -64,24 +39,10 @@
 
     # Network
     kget
-
     krdc
     krfb
-    partitionmanager
 
-    kdeconnect-kde
+    partitionmanager
     dolphin-plugins
   ]);
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    nerd-fonts.jetbrains-mono
-  ];
-
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
 }
