@@ -71,7 +71,7 @@
   # widgetStyle picks Darkly (pkgs.darkly below); its plugin key is "Darkly".
   environment.etc."xdg/kdeglobals".text = ''
     [KDE]
-    widgetStyle=Darkly
+    widgetStyle=Klassy
 
     [Icons]
     Theme=breeze
@@ -104,7 +104,7 @@
     [
       xwayland-satellite # XWayland for niri; niri launches it on demand
 
-      darkly # Qt6 widget style (nixpkgs builds the Qt6 half only)
+      klassy # Qt6 widget style (nixpkgs builds the Qt6 half only)
       haruna # mpv-based video player
     ]
     ++ (with pkgs.kdePackages; [

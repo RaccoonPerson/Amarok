@@ -10,16 +10,8 @@
     ./common.nix
     ./shell.nix
     ../../modules/home/vscode.nix
-    inputs.zen-browser.homeModules.beta
+    ../../modules/home/zen-browser.nix
   ];
-
-  programs.zen-browser = {
-    enable = true;
-    setAsDefaultBrowser = true;
-    # Policies, extensions, spaces, pinned tabs etc. can all be declared
-    # here later. Examples:
-    # https://github.com/0xc000022070/zen-browser-flake/tree/main/examples
-  };
 
   home.packages = with pkgs; [
     # Editing / documents
