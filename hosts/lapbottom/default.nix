@@ -10,6 +10,7 @@
     inputs.home-manager.nixosModules.home-manager
 
     ../../modules/nixos/desktops/noctalia.nix
+    ../../modules/nixos/desktops/driftwm.nix
     ../../modules/nixos/login-managers/noctalia-greeter.nix
 
     ../../modules/nixos/common.nix

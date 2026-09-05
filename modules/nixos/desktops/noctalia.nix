@@ -76,5 +76,6 @@
     simple-scan # scanner
     gnome-connections # RDP / VNC client
     drawing # simple paint app
+
   ];
 }

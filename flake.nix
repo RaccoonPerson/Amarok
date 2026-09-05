@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    driftwm = {
+      url = "github:malbiruk/driftwm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -45,38 +50,40 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, ... }@inputs: {
-    nixosConfigurations = {
-      archongrid = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/archongrid ];
-        specialArgs = { inherit inputs; };
+  outputs =
+    { nixpkgs, nixpkgs-stable, ... }@inputs:
+    {
+      nixosConfigurations = {
+        archongrid = nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/archongrid ];
+          specialArgs = { inherit inputs; };
+        };
+
+        thingamajig = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/thingamajig ];
+          specialArgs = { inherit inputs; };
+        };
+
+        lapbottom = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/lapbottom ];
+          specialArgs = { inherit inputs; };
+        };
       };
 
-      thingamajig = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/thingamajig ];
-        specialArgs = { inherit inputs; };
-      };
-
-      lapbottom = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/lapbottom ];
-        specialArgs = { inherit inputs; };
-      };
+      # Standalone HM for non NixOS Systems
+      # Build with: home-manager switch --flake .#racc@thingamajig
+      #     homeConfigurations = {
+      #       "racc@thingamajig" = inputs.home-manager.lib.homeManagerConfiguration {
+      #         pkgs = import nixpkgs {
+      #           system = "x86_64-linux";
+      #           config.allowUnfree = true;
+      #         };
+      #         extraSpecialArgs = { inherit inputs; };
+      #         modules = [ ./home/racc/standalone.nix ];
+      #       };
+      #     };
     };
-
-    # Standalone HM for non NixOS Systems
-    # Build with: home-manager switch --flake .#racc@thingamajig
-#     homeConfigurations = {
-#       "racc@thingamajig" = inputs.home-manager.lib.homeManagerConfiguration {
-#         pkgs = import nixpkgs {
-#           system = "x86_64-linux";
-#           config.allowUnfree = true;
-#         };
-#         extraSpecialArgs = { inherit inputs; };
-#         modules = [ ./home/racc/standalone.nix ];
-#       };
-#     };
-  };
 }
