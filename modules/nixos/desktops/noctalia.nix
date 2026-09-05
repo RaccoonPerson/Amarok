@@ -104,6 +104,8 @@
     [
       xwayland-satellite # XWayland for niri; niri launches it on demand
 
+      bibata-cursors
+
       klassy # Qt6 widget style (nixpkgs builds the Qt6 half only)
       haruna # mpv-based video player
     ]

@@ -11,6 +11,7 @@
     ./shell.nix
     ../../modules/home/vscode.nix
     ../../modules/home/zen-browser.nix
+    ../../modules/home/kitty.nix
   ];
 
   home.packages = with pkgs; [
@@ -30,7 +31,6 @@
 
     kontainer
   ];
-
 
   # Plasma settings stay imperative (System Settings) unless you add
   # plasma-manager as a flake input and import its HM module here.

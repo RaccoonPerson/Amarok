@@ -13,25 +13,21 @@
       set -g fish_greeting
     '';
 
-#     shellAbbrs = {
-#       g = "git";
-#       gs = "git status";
-#       ga = "git add";
-#       gc = "git commit";
-#       gp = "git push";
-#       cat = "bat";
-#       rebuild = "sudo nixos-rebuild switch --flake ~/Desktop/Amarok";
-#     };
+    #     shellAbbrs = {
+    #       g = "git";
+    #       gs = "git status";
+    #       ga = "git add";
+    #       gc = "git commit";
+    #       gp = "git push";
+    #       cat = "bat";
+    #       rebuild = "sudo nixos-rebuild switch --flake ~/Desktop/Amarok";
+    #     };
   };
 
   programs.starship = {
     enable = true;
     settings = {
       add_newline = false;
-      character = {
-        success_symbol = "[❯](bold green)";
-        error_symbol = "[❯](bold red)";
-      };
       directory.truncation_length = 3;
       nix_shell.format = "via [$symbol$state]($style) ";
     };
