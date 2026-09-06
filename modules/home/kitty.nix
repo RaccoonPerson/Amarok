@@ -83,29 +83,4 @@
   #
   # Rule for future edits: never use hex colors in this block, or that part
   # of the prompt stops following Noctalia.
-
-  programs.starship.settings = {
-    character = {
-      success_symbol = "[❯](bold green)";
-      error_symbol = "[❯](bold red)";
-      vimcmd_symbol = "[❮](bold yellow)";
-    };
-
-    directory = {
-      style = "bold blue";
-      truncation_length = 4;
-    };
-
-    git_branch.style = "bold magenta";
-    git_status.style = "bold red";
-    cmd_duration.style = "yellow";
-
-    nix_shell = {
-      symbol = " "; # Nerd Font nix glyph — works now that FiraCode NF is installed
-      style = "bold cyan";
-    };
-
-    username.style = "bold green";
-    hostname.style = "bold green";
-  };
 }

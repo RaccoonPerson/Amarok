@@ -16,6 +16,7 @@
     ../../modules/nixos/users.nix
     ../../modules/nixos/home-manager-settings.nix
     ../../modules/nixos/secure-boot.nix # comment out on install
+    ../../modules/nixos/virtualization.nix
   ];
 
   networking.hostName = "lapbottom";

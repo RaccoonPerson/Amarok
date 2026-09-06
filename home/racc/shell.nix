@@ -28,8 +28,32 @@
     enable = true;
     settings = {
       add_newline = false;
-      directory.truncation_length = 3;
       nix_shell.format = "via [$symbol$state]($style) ";
+
+      character = {
+        success_symbol = "[❯](bold green)";
+        error_symbol = "[❯](bold red)";
+        vimcmd_symbol = "[❮](bold yellow)";
+      };
+
+      directory = {
+        style = "bold blue";
+        truncation_length = 4;
+      };
+
+      git_branch.style = "bold magenta";
+      git_status.style = "bold red";
+      cmd_duration.style = "yellow";
+
+      nix_shell = {
+        symbol = " "; # Nerd Font nix glyph — works now that FiraCode NF is installed
+        style = "bold cyan";
+      };
+
+      username = {
+        style_user = "bold green";
+        style_root = "bold red";
+      };
     };
   };
 
@@ -37,7 +61,7 @@
   # eza also defines ls / ll / la / lt aliases.
   programs.eza.enable = true;
   programs.bat.enable = true;
-  programs.fzf.enable = true;
+  # programs.fzf.enable = true;
   programs.zoxide.enable = true;
 
   home.packages = with pkgs; [
