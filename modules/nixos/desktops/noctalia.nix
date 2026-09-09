@@ -71,10 +71,10 @@
   # widgetStyle picks Darkly (pkgs.darkly below); its plugin key is "Darkly".
   environment.etc."xdg/kdeglobals".text = ''
     [KDE]
-    widgetStyle=Klassy
+    widgetStyle=Darkly
 
     [Icons]
-    Theme=breeze
+    Theme=Papirus
   '';
 
   # Use the KDE file chooser for portal-using apps (Zen, Flatpaks, ...).
@@ -94,19 +94,40 @@
 
   # Installs KDE Connect and opens the firewall ports it needs; kdeconnectd
   # autostarts through xdg-desktop-autostart, indicator lands in Noctalia's tray.
-  programs.kdeconnect.enable = true;
+  # programs.kdeconnect.enable = true;
 
   # Sets up the polkit helper KDE Partition Manager needs.
   programs.partition-manager.enable = true;
 
+  # fontconfig.defaultFonts = {
+  #   sansSerif = [
+  #     "Inter"
+  #     "Noto Sans"
+  #     "Noto Color Emoji"
+  #   ];
+  #   serif = [
+  #     "Noto Serif"
+  #     "Noto Color Emoji"
+  #   ];
+  #   monospace = [
+  #     "JetBrainsMono Nerd Font"
+  #     "Noto Sans Mono"
+  #   ];
+  #   emoji = [ "Noto Color Emoji" ];
+  # };
+
   environment.systemPackages =
     with pkgs;
     [
+      papirus-icon-theme
+      papirus-folders
+      adw-gtk3
+
       xwayland-satellite # XWayland for niri; niri launches it on demand
 
       bibata-cursors
 
-      klassy # Qt6 widget style (nixpkgs builds the Qt6 half only)
+      darkly # Qt6 widget style (nixpkgs builds the Qt6 half only)
       haruna # mpv-based video player
     ]
     ++ (with pkgs.kdePackages; [

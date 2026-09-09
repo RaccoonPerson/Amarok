@@ -14,16 +14,16 @@
     onShutdown = "shutdown"; # shut guests down cleanly rather than saving state
 
     qemu = {
-      package = pkgs.qemu_kvm; # host arch only; pkgs.qemu if you want cross-arch emulation
+      package = pkgs.qemu_kvm;
       runAsRoot = false;
-      swtpm.enable = true; # emulated TPM 2.0, needed for Win11 guests
-      ovmf = {
-        enable = true;
-        packages = [ pkgs.OVMFFull.fd ]; # UEFI firmware incl. secure-boot variants
-      };
-      vhostUserPackages = [ pkgs.virtiofsd ]; # host<->guest shared folders
+      swtpm.enable = true;
+      vhostUserPackages = [ pkgs.virtiofsd ];
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/swtpm-localca 0750 tss tss - -"
+  ];
 
   virtualisation.spiceUSBRedirection.enable = true;
 
